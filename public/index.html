@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ZeroDown Store</title>
+
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      margin: 70px auto;
+      max-width: 700px;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .version {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 20px;
+    }
+
+    .status {
+      color: green;
+      font-weight: bold;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>ZeroDown Store</h1>
+
+    <p>
+      Blue-Green Deployment Demo
+    </p>
+
+  </header>
+
+  <div class="container">
+
+    <h2>Production Application</h2>
+
+    <div
+      class="version"
+      id="version"
+    >
+      Checking version...
+    </div>
+
+    <p class="status">
+      ● Application Healthy
+    </p>
+
+    <p>
+      This application demonstrates
+      zero-downtime deployment using
+      Docker and Kubernetes.
+    </p>
+
+  </div>
+
+  <script>
+
+    fetch("/version")
+
+      .then(response => response.json())
+
+      .then(data => {
+
+        document.getElementById("version")
+          .innerText =
+          "Running Version: " + data.version;
+
+      })
+
+      .catch(() => {
+
+        document.getElementById("version")
+          .innerText =
+          "Version unavailable";
+
+      });
+
+  </script>
+
+</body>
+
+</html>

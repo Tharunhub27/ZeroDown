@@ -1,0 +1,10 @@
+{
+  "name": "zerodown",
+  "version": "1.0.0",
+  "description": "Blue-Green deployment demonstration using Docker and Kubernetes",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  }
+}
