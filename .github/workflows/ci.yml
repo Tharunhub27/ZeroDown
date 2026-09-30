@@ -1,0 +1,29 @@
+name: ZeroDown CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build Blue Docker image
+        run: docker build --build-arg APP_VERSION=v1 -t zerodown:v1 .
+
+      - name: Build Green Docker image
+        run: docker build --build-arg APP_VERSION=v2 -t zerodown:v2 .
