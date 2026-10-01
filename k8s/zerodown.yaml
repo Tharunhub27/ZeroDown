@@ -75,9 +75,11 @@ kind: Service
 metadata:
   name: zerodown-service
 spec:
+  type: NodePort
   selector:
     app: zerodown
     version: blue
   ports:
     - port: 80
       targetPort: 3000
+      nodePort: 30080
