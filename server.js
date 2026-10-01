@@ -37,7 +37,9 @@ const server = http.createServer((req, res) => {
   if (req.url === "/version") {
 
     res.writeHead(200, {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Connection": "close",
+      "Cache-Control": "no-store"
     });
 
     res.end(
